@@ -11,7 +11,7 @@ namespace Blog
         private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=Sua@Debug@12345;TrustServerCertificate=True";
         static void Main()
         {
-            Update();
+            DeleteUser();
         }
 
         static void ReadUsers()
@@ -56,7 +56,7 @@ namespace Blog
             }
         }
 
-        static void Update()
+        static void UpdateUser()
         {
             var user = new User()
             {
@@ -73,6 +73,16 @@ namespace Blog
             {
                 connection.Update<User>(user); // vai me retorna um inteiro
                 Console.WriteLine($"Atualização Feito com sucesso");
+            }
+        }
+
+        static void DeleteUser()
+        {
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                var user = connection.Get<User>(2);
+                connection.Delete<User>(user);
+                Console.WriteLine("Exclusão realizada com sucesso");
             }
         }
     }
