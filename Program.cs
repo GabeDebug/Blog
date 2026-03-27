@@ -28,12 +28,31 @@ namespace Blog
             }
         }
 
-         public  static void ReadUser()
+        static void ReadUser()
         {
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 var user = connection.Get<User>(1);
                 Console.WriteLine($"{user.Name}");
+            }
+        }
+
+        static void CreateUser()
+        {
+            var user = new User()
+            {
+                Bio = "Equipe Gabriel Debug",
+                Email = "hello@gmail.com",
+                Image = "https://...",
+                Name = "Equipe Gabriel",
+                PasswordHash = "Hash",
+                Slug = "equipe-gabriel"
+            };
+
+            using(var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Insert<User>(user); // vai me retorna um inteiro
+                Console.WriteLine($"Cadastro Feito com sucesso");
             }
         }
     }
