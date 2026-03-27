@@ -17,7 +17,8 @@ namespace Blog
         {
             using (var connection = new SqlConnection(CONNECTION_STRING))
             {
-                var users = connection.GetAll<User>();
+                var users = connection.GetAll<User>(); // metodo GetAll vai escrever a sintaxe e busca 
+                // todos os campos do usuario 
 
                 foreach (var user in users)
                 {

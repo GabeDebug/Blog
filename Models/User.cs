@@ -1,5 +1,8 @@
+using Dapper.Contrib.Extensions;
+
 namespace Blog.Model
 {
+    [Table("[User]")] // buscando a tabela User
     public class User
     {
         public int Id { get; set; }
