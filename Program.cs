@@ -11,7 +11,7 @@ namespace Blog
         private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=Sua@Debug@12345;TrustServerCertificate=True";
         static void Main()
         {
-            
+            Update();
         }
 
         static void ReadUsers()
@@ -49,10 +49,30 @@ namespace Blog
                 Slug = "equipe-gabriel"
             };
 
-            using(var connection = new SqlConnection(CONNECTION_STRING))
+            using (var connection = new SqlConnection(CONNECTION_STRING))
             {
                 connection.Insert<User>(user); // vai me retorna um inteiro
                 Console.WriteLine($"Cadastro Feito com sucesso");
+            }
+        }
+
+        static void Update()
+        {
+            var user = new User()
+            {
+                Id = 2,
+                Bio = "Equipe | Gabriel Debug",
+                Email = "hello@gmail.com",
+                Image = "https://...",
+                Name = "Equipe De Suporte Gabriel",
+                PasswordHash = "Hash",
+                Slug = "equipe-gabriel"
+            };
+
+            using (var connection = new SqlConnection(CONNECTION_STRING))
+            {
+                connection.Update<User>(user); // vai me retorna um inteiro
+                Console.WriteLine($"Atualização Feito com sucesso");
             }
         }
     }
