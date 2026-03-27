@@ -7,7 +7,6 @@ namespace Blog
 {
     class Program
     {
-
         private const string CONNECTION_STRING = @"";
         static void Main()
         {
@@ -20,11 +19,12 @@ namespace Blog
             {
                 var users = connection.GetAll<User>();
 
-                foreach(var user in users)
+                foreach (var user in users)
                 {
                     Console.WriteLine($"{user.Name}");
                 }
-            };
+            }
+            ;
 
         }
     }
