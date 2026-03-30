@@ -12,12 +12,15 @@ namespace Blog
         private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=Sua@Debug@12345;TrustServerCertificate=True";
         static void Main()
         {
-            ReadUsers();
+            var connection = new SqlConnection(CONNECTION_STRING);
+            connection.Open();
+            //ReadUsers();
+            connection.Close();
         }
 
-        static void ReadUsers()
+        static void ReadUsers(SqlConnection connection)
         {
-            var repository = new UserRepositories();
+            var repository = new UserRepositories(connection);
             var users = repository.Get();
 
             foreach (var user in users)
