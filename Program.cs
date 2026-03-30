@@ -12,7 +12,7 @@ namespace Blog
         private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=Sua@Debug@12345;TrustServerCertificate=True";
         static void Main()
         {
-            DeleteUser();
+            ReadUsers();
         }
 
         static void ReadUsers()
@@ -21,9 +21,7 @@ namespace Blog
             var users = repository.Get();
 
             foreach (var user in users)
-            {
                 Console.WriteLine($"{user.Bio}");
-            }
         }
 
         static void ReadUser()
