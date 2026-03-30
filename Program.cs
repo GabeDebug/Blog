@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using Blog.Model;
+using Blog.Repositories;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
@@ -16,15 +17,12 @@ namespace Blog
 
         static void ReadUsers()
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var users = connection.GetAll<User>(); // metodo GetAll vai escrever a sintaxe e busca 
-                // todos os campos do usuario 
+            var repository = new UserRepositories();
+            var users = repository.Get();
 
-                foreach (var user in users)
-                {
-                    Console.WriteLine($"{user.Bio}");
-                }
+            foreach (var user in users)
+            {
+                Console.WriteLine($"{user.Bio}");
             }
         }
 
