@@ -13,76 +13,27 @@ namespace Blog
         static void Main()
         {
             var connection = new SqlConnection(CONNECTION_STRING);
-            connection.Open();
-            //ReadUsers();
-            connection.Close();
+            connection.Open(); // vai abrir a conexão
+            ReadUsers(connection);
+            ReadRoles(connection);
+            connection.Close(); // vai fecha a conexão
         }
 
         static void ReadUsers(SqlConnection connection)
         {
             var repository = new UserRepositories(connection);
             var users = repository.Get();
-
             foreach (var user in users)
                 Console.WriteLine($"{user.Bio}");
         }
 
-        static void ReadUser()
+        static void ReadRoles(SqlConnection connection)
         {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var user = connection.Get<User>(1);
-                Console.WriteLine($"{user.Name}");
-            }
-        }
+            var repository = new RoleRepository(connection);
+            var roles = repository.Get(); // return Enumerable Role -> No User
 
-        static void CreateUser()
-        {
-            var user = new User()
-            {
-                Bio = "Equipe Gabriel Debug",
-                Email = "hello@gmail.com",
-                Image = "https://...",
-                Name = "Equipe Gabriel",
-                PasswordHash = "Hash",
-                Slug = "equipe-gabriel"
-            };
-
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Insert<User>(user); // vai me retorna um inteiro
-                Console.WriteLine($"Cadastro Feito com sucesso");
-            }
-        }
-
-        static void UpdateUser()
-        {
-            var user = new User()
-            {
-                Id = 2,
-                Bio = "Equipe | Gabriel Debug",
-                Email = "hello@gmail.com",
-                Image = "https://...",
-                Name = "Equipe De Suporte Gabriel",
-                PasswordHash = "Hash",
-                Slug = "equipe-gabriel"
-            };
-
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                connection.Update<User>(user); // vai me retorna um inteiro
-                Console.WriteLine($"Atualização Feito com sucesso");
-            }
-        }
-
-        static void DeleteUser()
-        {
-            using (var connection = new SqlConnection(CONNECTION_STRING))
-            {
-                var user = connection.Get<User>(2);
-                connection.Delete<User>(user);
-                Console.WriteLine("Exclusão realizada com sucesso");
-            }
+            foreach (var role in roles)
+                Console.WriteLine($"{role.Id}");
         }
     }
 }
