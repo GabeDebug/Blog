@@ -19,13 +19,13 @@ namespace Blog.Repositories
         //? Sintaxe "=>" é equivalente a: { _connection = connection; }
         public void Update(Role role)
         {
-            if (role.Id != 0)
-                _connection.Update<Role>(role);
+            if (role.Id != 0)  //? Só atualiza se o Id for válido (diferente de 0)
+                _connection.Update<Role>(role); // Executa o UPDATE no banco
         }
         public void Delete(Role role)
         {
-            if (role.Id != 0)
-                _connection.Delete<Role>(role);
+            if (role.Id != 0) //? Só deleta se o Id for válido
+                _connection.Delete<Role>(role); //? // Executa o DELETE no banco
         }
         public void Delete(int id)
         {
