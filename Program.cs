@@ -21,7 +21,7 @@ namespace Blog
 
         static void ReadUsers(SqlConnection connection)
         {
-            var repository = new UserRepositories(connection);
+            var repository = new Repository<User>(connection);
             var users = repository.Get();
 
             foreach (var user in users)
