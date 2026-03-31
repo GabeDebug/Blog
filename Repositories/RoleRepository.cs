@@ -16,5 +16,24 @@ namespace Blog.Repositories
             => _connection.Get<Role>(id);
         public void Get(Role role)
             => _connection.Insert<Role>(role);
+        //? Sintaxe "=>" é equivalente a: { _connection = connection; }
+        public void Update(Role role)
+        {
+            if (role.Id != 0)
+                _connection.Update<Role>(role);
+        }
+        public void Delete(Role role)
+        {
+            if (role.Id != 0)
+                _connection.Delete<Role>(role);
+        }
+        public void Delete(int id)
+        {
+            if (id != 0)
+                return;
+
+            var user = _connection.Get<Role>(id);
+            _connection.Delete<Role>(user);
+        }
     }
 }

@@ -23,8 +23,9 @@ namespace Blog
         {
             var repository = new UserRepositories(connection);
             var users = repository.Get();
+
             foreach (var user in users)
-                Console.WriteLine($"{user.Bio}");
+                Console.WriteLine($"{user.Name}");
         }
 
         static void ReadRoles(SqlConnection connection)
