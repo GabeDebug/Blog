@@ -23,7 +23,7 @@ namespace Blog.Repositories
         public void Update(TModel model)
              => _connection.Update<TModel>(model); // Executa o UPDATE no banco
         public void Delete(TModel model)
-            => _connection.Delete<TModel>(model); //? // Executa o DELETE no banco
+            => _connection.Delete<TModel>(model); //? Executa o DELETE no banco
         public void Delete(int id)
         {
             var model = _connection.Get<TModel>(id);

@@ -22,10 +22,10 @@ namespace Blog
         static void ReadUsers(SqlConnection connection)
         {
             var repository = new Repository<User>(connection);
-            var users = repository.Get();
+            var items = repository.Get();
 
-            foreach (var user in users)
-                Console.WriteLine($"{user.Name}");
+            foreach (var item in items)
+                Console.WriteLine($"{item.Name}");
         }
 
         public static void ReadRoles(SqlConnection connection)
@@ -33,11 +33,21 @@ namespace Blog
             var repository = new Repository<Role>(connection);
             var items = repository.Get();
 
-            foreach (var user in items)
+            foreach (var item in items)
             {
-                Console.WriteLine(user.Name);
+                Console.WriteLine($"{item.Name}");
             }
+        }
 
+        public static void ReadTag(SqlConnection connection)
+        {
+            var repository = new Repository<Tag>(connection);
+            var items = repository.Get();
+
+            foreach (var item in items)
+            {
+                Console.WriteLine($"{item.Name}");
+            }
         }
     }
 }
