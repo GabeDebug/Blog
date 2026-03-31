@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Runtime.CompilerServices;
 using Blog.Model;
 using Blog.Repositories;
 using Dapper.Contrib.Extensions;
@@ -25,6 +26,18 @@ namespace Blog
 
             foreach (var user in users)
                 Console.WriteLine($"{user.Name}");
+        }
+
+        public static void ReadRoles(SqlConnection connection)
+        {
+            var repository = new Repository<Role>(connection);
+            var items = repository.Get();
+
+            foreach (var user in items)
+            {
+                Console.WriteLine(user.Name);
+            }
+
         }
     }
 }
