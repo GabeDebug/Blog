@@ -15,7 +15,6 @@ namespace Blog
             var connection = new SqlConnection(CONNECTION_STRING);
             connection.Open(); // vai abrir a conexão
             ReadUsers(connection);
-            ReadRoles(connection);
             connection.Close(); // vai fecha a conexão
         }
 
@@ -26,15 +25,6 @@ namespace Blog
 
             foreach (var user in users)
                 Console.WriteLine($"{user.Name}");
-        }
-
-        static void ReadRoles(SqlConnection connection)
-        {
-            var repository = new RoleRepository(connection);
-            var roles = repository.Get(); // return Enumerable Role -> No User
-
-            foreach (var role in roles)
-                Console.WriteLine($"{role.Id}");
         }
     }
 }
