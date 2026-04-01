@@ -38,9 +38,7 @@ namespace Blog
             var items = repository.Get();
 
             foreach (var item in items)
-            {
                 Console.WriteLine($"{item.Name}");
-            }
         }
 
         public static void ReadTag(SqlConnection connection)
@@ -49,9 +47,7 @@ namespace Blog
             var items = repository.Get();
 
             foreach (var item in items)
-            {
-                Console.WriteLine($"{item.Name}");
-            }
+                Console.WriteLine($"{item.Name}");   
         }
     }
 }

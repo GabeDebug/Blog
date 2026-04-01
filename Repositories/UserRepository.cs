@@ -6,7 +6,7 @@ namespace Blog.Repositories
     {
         private readonly SqlConnection _connection;
 
-        public UserRepository(SqlConnection connection) : base (connection) // chamando o contrutor da classe base
-            => _connection = connection;
+        public UserRepository(SqlConnection connection) : base (connection) // Repassa a conexão para o construtor da classe pai
+            => _connection = connection; // Salva a conexão no campo local da classe filha
     }
 }
