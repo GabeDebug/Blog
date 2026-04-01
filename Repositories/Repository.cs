@@ -1,6 +1,7 @@
 using System.Data;
 using Blog.Model;
 using Blog.Repositories;
+using Dapper;
 using Dapper.Contrib.Extensions;
 using Microsoft.Data.SqlClient;
 
@@ -20,8 +21,9 @@ namespace Blog.Repositories
         public void Get(TModel model)
             => _connection.Insert<TModel>(model);
         //? Sintaxe "=>" é equivalente a: { _connection = connection; }
+
         public void Update(TModel model)
-             => _connection.Update<TModel>(model); // Executa o UPDATE no banco
+            => _connection.Update<TModel>(model); // Executa o UPDATE no banco
         public void Delete(TModel model)
             => _connection.Delete<TModel>(model); //? Executa o DELETE no banco
         public void Delete(int id)
