@@ -15,7 +15,11 @@ namespace Blog
         {
             var connection = new SqlConnection(CONNECTION_STRING);
             connection.Open(); // vai abrir a conexão
+
             ReadUsers(connection);
+            //ReadRoles(connection);
+            //ReadTag(connection);
+
             connection.Close(); // vai fecha a conexão
         }
 

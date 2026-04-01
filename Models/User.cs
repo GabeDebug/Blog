@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using Dapper.Contrib.Extensions;
 
 namespace Blog.Model
@@ -5,6 +6,9 @@ namespace Blog.Model
     [Table("[User]")] // buscando a tabela User
     public class User
     {
+        public User()
+            => Roles = new List<Role>();
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -12,5 +16,6 @@ namespace Blog.Model
         public string Bio { get; set; }
         public string Image { get; set; }
         public string Slug { get; set; }
+        public List<Role> Roles { get; set; }
     }
 }
