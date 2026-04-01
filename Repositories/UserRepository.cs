@@ -1,4 +1,5 @@
 using Blog.Model;
+using Dapper;
 using Microsoft.Data.SqlClient;
 namespace Blog.Repositories
 {
@@ -6,7 +7,40 @@ namespace Blog.Repositories
     {
         private readonly SqlConnection _connection;
 
-        public UserRepository(SqlConnection connection) : base (connection) // Repassa a conexão para o construtor da classe pai
+        public UserRepository(SqlConnection connection) : base(connection) // Repassa a conexão para o construtor da classe pai
             => _connection = connection; // Salva a conexão no campo local da classe filha
+
+        public List<User> GetWithRoles()
+        {
+            var query = @"
+            SELECT 
+                [User].*,
+                [Role].*
+            FROM 
+                [User]
+                LEFT JOIN [UserRole] ON [UserRole].[UserId] = [User].[Id]
+                LEFT JOIN [Role] ON [UserRole].[RoleId] = [Role].[Id]";
+            var users = new List<User>();
+
+            var items = _connection.Query<User, Role, User>(
+                query,
+                (user, role) =>
+                {
+                    var usr = users.FirstOrDefault(x => x.Id == user.Id);
+                    if (usr == null)
+                    {
+                        usr = user;
+                        usr.Roles.Add(role);
+                        users.Add(usr);
+                    }
+                    else
+                        usr.Roles.Add(role);
+
+                    return user;
+
+                }, splitOn: "Id");
+
+            return users;
+        }
     }
 }
