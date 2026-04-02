@@ -2,11 +2,11 @@ using System;
 
 namespace Blog.Screens.TagScreens
 {
-    public class ListTag
+    public class ListTagScreen
     {
-        static void Load()
+        public static void Load()
         {
-            
+
         }
     }
 }

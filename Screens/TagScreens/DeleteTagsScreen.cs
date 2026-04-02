@@ -4,9 +4,9 @@ namespace Blog.Screens.TagScreens
 {
     public class DeleteTagsScreen
     {
-        static void Load()
+        public static void Load()
         {
-            
+
         }
     }
 }
