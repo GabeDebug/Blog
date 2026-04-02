@@ -15,13 +15,13 @@ namespace Blog
         private const string CONNECTION_STRING = @"Server=localhost,1433;Database=Blog;User ID=sa;Password=Sua@Debug@12345;TrustServerCertificate=True";
         static void Main()
         {
-            var connection = new SqlConnection(CONNECTION_STRING);
-            connection.Open(); // vai abrir a conexão
+            Database.Connection = new SqlConnection(CONNECTION_STRING);
+            Database.Connection.Open(); // vai abrir a conexão
 
             Load();
 
             Console.ReadKey(); // Digitou uma tecla vai fecha 
-            connection.Close(); // vai fecha a conexão
+            Database.Connection.Close(); // vai fecha a conexão
         }
 
         private static void Load()
@@ -39,12 +39,13 @@ namespace Blog
             Console.WriteLine("6 - Vincular post/Tag");
             Console.WriteLine("7 - Relatórios");
             Console.WriteLine();
+
             var option = short.Parse(Console.ReadLine());
 
             switch (option)
             {
-                case 1:
-                    MenuTagsScreen.Load();
+                case 4:
+                    MenuTagsScreen.Load(); // vai entra na tela do Menu
                     break;
                 default: Load(); break;
             }
