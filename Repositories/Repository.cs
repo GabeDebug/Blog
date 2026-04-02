@@ -11,29 +11,27 @@ namespace Blog.Repositories
         //? classe genérica de repositório — TModel representa qualquer entidade (ex: Usuario, Produto)
         //? A restrição "where TModel : class" garante que só aceita tipos de referência (classes)
     {
-        private SqlConnection connection;
+        private readonly SqlConnection _connection;
 
         public Repository(SqlConnection connection)
-        {
-            this.connection = connection;
-        }
+            => _connection = connection;
 
         public IEnumerable<TModel> Get()
-            => Database.Connection.GetAll<TModel>();
+            => _connection.GetAll<TModel>();
         public TModel Get(int id)
-            => Database.Connection.Get<TModel>(id);
+            => _connection.Get<TModel>(id);
         public void Get(TModel model)
-            => Database.Connection.Insert<TModel>(model);
+            => _connection.Insert<TModel>(model);
         //? Sintaxe "=>" é equivalente a: { _connection = connection; }
 
         public void Update(TModel model)
-            => Database.Connection.Update<TModel>(model); // Executa o UPDATE no banco
+            => _connection.Update<TModel>(model); // Executa o UPDATE no banco
         public void Delete(TModel model)
-            => Database.Connection.Delete<TModel>(model); //? Executa o DELETE no banco
+            => _connection.Delete<TModel>(model); //? Executa o DELETE no banco
         public void Delete(int id)
         {
-            var model = Database.Connection.Get<TModel>(id);
-            Database.Connection.Delete<TModel>(model);
+            var model = _connection.Get<TModel>(id);
+            _connection.Delete<TModel>(model);
         }
     }
 }
