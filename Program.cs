@@ -33,6 +33,7 @@ namespace Blog
             foreach (var item in items)
                 Console.WriteLine($"{item.Name}");
         }
+
         public static void ReadUsersWithRoles(SqlConnection connection)
         {
             var repository = new UserRepository(connection);

@@ -30,7 +30,9 @@ namespace Blog.Repositories
                     if (usr == null)
                     {
                         usr = user;
-                        usr.Roles.Add(role);
+                        if (role != null)
+                            usr.Roles.Add(role);
+
                         users.Add(usr);
                     }
                     else
