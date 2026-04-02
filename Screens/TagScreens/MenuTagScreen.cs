@@ -4,7 +4,7 @@ namespace Blog.Screens.TagScreens
     {
         public static void Load()
         {
-            Console.Clear();
+            Console.Clear(); // vai limpar o Console
             Console.WriteLine("Gestão de Tags");
             Console.WriteLine("-------------------");
             Console.WriteLine("O que deseja fazer?");
@@ -12,7 +12,18 @@ namespace Blog.Screens.TagScreens
             Console.WriteLine("1 - Listar tags");
             Console.WriteLine();
             Console.WriteLine();
-            var option = short.Parse(Console.ReadLine());
+            var option = short.Parse(Console.ReadLine()!);
+            
+            switch (option)
+            {
+                case 1: 
+                    .Load();
+                    break;
+                case 2:
+                    .Load();
+                    break;
+                default: Load(); break;
+            }
         }
     }
 }
