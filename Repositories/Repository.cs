@@ -23,7 +23,7 @@ namespace Blog.Repositories
         public void Get(TModel model)
             => _connection.Insert<TModel>(model);
         //? Sintaxe "=>" é equivalente a: { _connection = connection; }
-        public void Create(TModel model)
+        public void Create(TModel model) // Create Método
             => _connection.Insert<TModel>(model);
         public void Update(TModel model)
             => _connection.Update<TModel>(model); // Executa o UPDATE no banco

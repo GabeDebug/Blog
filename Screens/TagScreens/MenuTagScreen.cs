@@ -28,7 +28,7 @@ namespace Blog.Screens.TagScreens
                     CreateTagsScreen.Load();
                     break;
                 case 3:
-                    UpdateTagsScreen.Load();
+                    UpdateTagsScreen.Load(id);
                     break;
                 case 4:
                     DeleteTagsScreen.Load();
