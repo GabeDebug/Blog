@@ -13,6 +13,7 @@ namespace Blog.Screens.TagScreens
             Console.WriteLine("--------------");
             List();
             Console.ReadKey();
+            MenuTagsScreen.Load();
         }
         private static void List()
         {
