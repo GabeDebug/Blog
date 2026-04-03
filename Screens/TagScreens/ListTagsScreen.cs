@@ -9,7 +9,10 @@ namespace Blog.Screens.TagScreens
     {
         public static void Load()
         {
-
+            Console.WriteLine("Lista de Tags");
+            Console.WriteLine("--------------");
+            List();
+            Console.ReadKey();
         }
         private static void List()
         {
