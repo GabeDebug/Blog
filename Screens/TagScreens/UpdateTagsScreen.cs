@@ -6,13 +6,13 @@ namespace Blog.Screens.TagScreens
 {
     public class UpdateTagsScreen
     {
-        public static void Load(int id1)
+        public static void Load(int id)
         {
             Console.Clear();
             Console.WriteLine("Atualizando uma Tag:");
             Console.WriteLine("---------------");
             Console.Write("Id: ");
-            var id = Console.ReadLine();
+            var id1 = Console.ReadLine();
 
             Console.Write("Name: ");
             var name = Console.ReadLine();
@@ -22,7 +22,7 @@ namespace Blog.Screens.TagScreens
 
             Update(new Tag
             {
-                Id = int.Parse(id),
+                Id = int.Parse(id1),
                 Name = name,
                 Slug = slug
             });

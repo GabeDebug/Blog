@@ -1,3 +1,5 @@
+using System.Data.Common;
+
 namespace Blog.Screens.TagScreens
 {
     public class MenuTagsScreen
@@ -28,7 +30,7 @@ namespace Blog.Screens.TagScreens
                     CreateTagsScreen.Load();
                     break;
                 case 3:
-                    UpdateTagsScreen.Load(id);
+                    UpdateTagsScreen.Load();
                     break;
                 case 4:
                     DeleteTagsScreen.Load();
